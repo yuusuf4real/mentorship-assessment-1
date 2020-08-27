@@ -1,0 +1,8 @@
+{
+  "name": "hotel_system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/decadevs/week-4-python-template.git",
+  "author": "abdulfataiaka <abdulfataiaka@gmail.com>",
+  "license": "MIT"
+}
