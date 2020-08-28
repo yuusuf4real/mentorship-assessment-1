@@ -5,6 +5,7 @@ class Table {
     this.fields = fields;
   }
 
+
   insert(...params) {
     // Requirements:
     //   - Add a record entry to the self.data dictionary
@@ -16,6 +17,24 @@ class Table {
     //   - Return a dictionary representing the record that has just been successfully inserted
 
     // Add your implementation here ...
+    const [...paramValues] = params,
+          [...fieldValues] = this.fields;
+
+    for(let fieldValue in fieldValues){
+      let field = fieldValues[fieldValue];
+      if(field == 'id' || field == 'name' || field == 'price' || field == 'capacity' || field ==
+        'room_id' || field =='hotel_id' || field == 'paid')
+
+        for(let paramValue in paramValues){
+          if(paramValue == 'undefined') throw new Error('No value found(undefined)')
+          let feildValue = paramValues[paramValue];
+          // let _id = fieldValue;
+          // let _nextId = _id;
+          // if(_id === _nextId) _id += _nextId;
+          this.data[field] = parseInt(fieldValue);
+        }
+    }
+    return this.data;
   }
 
   select(...conditions) {
@@ -27,6 +46,14 @@ class Table {
     //   - Return a list of dictionaries representing records that matched entires in the conditions argument
 
     // Add your implementation here ...
+    const [...conditionsInput] = conditions;
+    conditionsInput.filter(input => {
+      for(data in this.data) {
+        if(input in this.data){
+          return input;
+        }
+      }
+    });
   }
 }
 

@@ -2,11 +2,10 @@ const Room = require('./room');
 const Model = require('./model');
 
 class Booking extends Model {
-  id = None;
-  room_id = None;
-  name = None;
-  paid = None;
-
+  id = Null;
+  room_id = Null;
+  name = Null;
+  paid = Null;
 
   static create(record) {
     // Requirements:
@@ -16,6 +15,10 @@ class Booking extends Model {
     const instance = new Booking();
 
     // Add your implementation here ...
+    this.id      = record;
+    this.room_id = record;
+    this.name    = record,
+    this.paid    = record;
 
     return instance;
   }
@@ -28,6 +31,11 @@ class Booking extends Model {
     //    - Return a Room model instance by calling the model's create method with the first record in the query results
 
     // Remove the pass statement below and add your implementation there ...
+    if(db){
+      return Booking.create(this.room_id);
+    } else{
+      return none;
+    }
   }
 }
 
