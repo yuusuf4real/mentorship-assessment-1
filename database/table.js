@@ -16,6 +16,12 @@ class Table {
     //   - Return a dictionary representing the record that has just been successfully inserted
 
     // Add your implementation here ...
+
+    const data = {hotels, rooms, bookings};
+
+    if(typeof(params) === [] && params.length !== []) {
+      
+    }
   }
 
   select(...conditions) {
