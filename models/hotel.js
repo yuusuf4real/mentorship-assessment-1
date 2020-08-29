@@ -1,8 +1,8 @@
 const Model = require('./model');
 
 class Hotel extends Model {
-  id = Null;
-  name = Null;
+  id = null;
+  name = null;
 
   static create(record) {
     // Requirements:
@@ -10,11 +10,12 @@ class Hotel extends Model {
     //   - Assign values from the record object to the corresponding model attributes
 
 
-    const instance = new Hotel();
+    const instance = new Hotel;
 
     // Add your implementation here ...
-    this.id      = record;
-    this.name    = record;
+
+    instance.id = record;
+    instance.name = record;
 
     return instance;
   }

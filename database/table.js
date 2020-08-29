@@ -17,23 +17,32 @@ class Table {
     //   - Return a dictionary representing the record that has just been successfully inserted
 
     // Add your implementation here ...
-    const [...paramValues] = params,
-          [...fieldValues] = this.fields;
 
-    for(let fieldValue in fieldValues){
-      let field = fieldValues[fieldValue];
-      if(field == 'id' || field == 'name' || field == 'price' || field == 'capacity' || field ==
-        'room_id' || field =='hotel_id' || field == 'paid')
+    let recordId = '_id';
+    let idGen = 0;
+    this.cursor = idGen++;
 
-        for(let paramValue in paramValues){
-          if(paramValue == 'undefined') throw new Error('No value found(undefined)')
-          let feildValue = paramValues[paramValue];
-          // let _id = fieldValue;
-          // let _nextId = _id;
-          // if(_id === _nextId) _id += _nextId;
-          this.data[field] = parseInt(fieldValue);
-        }
-    }
+    if(this.cursor <= 0 && this.cursor === this.cursor)
+      this.cursor += 1;
+
+    if(this.fields.length !== 0
+       && typeof this.fields === 'object'){
+        this.data[recordId] = idGen;
+
+        this.fields.forEach(value => {
+           let field = value;
+
+        if(field == '_id' || field == 'name' || field == 'price' || field == 'capacity' || field ==
+          'room_id' || field =='hotel_id' || field == 'paid')
+
+        params.forEach(param => {
+          if(param == 'undefined') throw new Error('No value found(undefined)')
+          let feildValue = param;
+          this.data[field] = feildValue;
+        });
+    })
+   }
+
     return this.data;
   }
 
@@ -46,15 +55,22 @@ class Table {
     //   - Return a list of dictionaries representing records that matched entires in the conditions argument
 
     // Add your implementation here ...
-    const [...conditionsInput] = conditions;
-    conditionsInput.filter(input => {
-      for(data in this.data) {
-        if(input in this.data){
-          return input;
-        }
-      }
-    });
+    let selectData = []
+     if(this.fields.length !== 0
+       && typeof this.fields === 'object' && Object.hasOwnProperty(this.fields)){
+
+       this.fields.forEach(data => {
+         conditions.forEach(condition => {
+          if(data == condition)
+            selectData.push(data);
+          else
+            throw new Error('No data match')
+         });
+       });
+     }
+    return selectData;
   }
 }
+
 
 module.exports = Table;
