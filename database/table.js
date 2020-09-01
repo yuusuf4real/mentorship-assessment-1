@@ -16,11 +16,18 @@ class Table {
     //   - Return a dictionary representing the record that has just been successfully inserted
 
     // Add your implementation here ...
+    Table.data(hotels, rooms, bookings);
 
-    const data = {hotels, rooms, bookings};
-
-    if(typeof(params) === [] && params.length !== []) {
+    if(typeof(params) === {} && params.length !== {}) {
       
+    }
+
+    Table.cursor(hotels_id, rooms_id, bookings_id);
+
+    return  {
+      hotels_id: 1,
+      rooms_id: 2,
+      bookings_id: 5
     }
   }
 
