@@ -5,13 +5,12 @@ class Table {
     this.fields = fields;
   }
 
-
   insert(...params) {
     // Requirements:
     //   - Add a record entry to the self.data dictionary
     //   - BUT ::::
     //   - Validate that params is a (1) dictionary (2) non-empty (3) Keys are in self.fields list
-    //  - Ensure to generate a record id for the new record using the cursor attribute. Note: ids must always start from 1
+    //   - Ensure to generate a record id for the new record using the cursor attribute. Note: ids must always start from 1
     //   - Ensure to use generated id as key for insert and also inject into the actual record to be inserted with the key => _id
     //   - Manually or allow python to raise appropriate exceptions when there are errors
     //   - Return a dictionary representing the record that has just been successfully inserted
@@ -19,28 +18,20 @@ class Table {
     // Add your implementation here ...
 
     let recordId = '_id';
-    let idGen = 0;
-    this.cursor = idGen++;
+    this.cursor += 1;
 
     if(this.cursor <= 0 && this.cursor === this.cursor)
       this.cursor += 1;
 
     if(this.fields.length !== 0
        && typeof this.fields === 'object'){
-        this.data[recordId] = idGen;
+        this.data[recordId] = this.cursor;
 
-        this.fields.forEach(value => {
-           let field = value;
+        this.fields.forEach(field => { this.data[recordId]});
 
-        if(field == '_id' || field == 'name' || field == 'price' || field == 'capacity' || field ==
-          'room_id' || field =='hotel_id' || field == 'paid')
-
-        params.forEach(param => {
-          if(param == 'undefined') throw new Error('No value found(undefined)')
-          let feildValue = param;
-          this.data[field] = feildValue;
-        });
-    })
+        for(let i = 0; i < this.fields.length; i++){
+          this.data[this.fields[i]] = params[i];
+        }
    }
 
     return this.data;
@@ -55,7 +46,7 @@ class Table {
     //   - Return a list of dictionaries representing records that matched entires in the conditions argument
 
     // Add your implementation here ...
-    let selectData = []
+    let selectData = [];
      if(this.fields.length !== 0
        && typeof this.fields === 'object' && Object.hasOwnProperty(this.fields)){
 
@@ -71,6 +62,5 @@ class Table {
     return selectData;
   }
 }
-
 
 module.exports = Table;
