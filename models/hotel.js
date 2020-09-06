@@ -14,7 +14,7 @@ class Hotel extends Model {
 
     // Add your implementation here ...
 
-    instance.id = record;
+    instance.id   = 1;
     instance.name = record;
 
     return instance;

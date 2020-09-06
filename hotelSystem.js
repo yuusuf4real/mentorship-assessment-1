@@ -12,7 +12,7 @@ class HotelSystem {
 
     // Add your implementation here ...
 
-    return Hotel.create(name)
+    return Hotel.create(name);
   }
 
   addRoom(hotelId, ...params) {
@@ -48,8 +48,8 @@ class HotelSystem {
     //   - Return a Booking model by calling the model's create method instance with the query result
 
     // Add your implementation here ...
-    
-    return Booking.create(roomId, params);
+
+    return Booking.create(roomId);
   }
 }
 

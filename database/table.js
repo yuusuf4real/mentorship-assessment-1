@@ -46,20 +46,17 @@ class Table {
     //   - Return a list of dictionaries representing records that matched entires in the conditions argument
 
     // Add your implementation here ...
-    let selectData = [];
-     if(this.fields.length !== 0
-       && typeof this.fields === 'object' && Object.hasOwnProperty(this.fields)){
-
-       this.fields.forEach(data => {
+    let matctRecords = [];
+     if(conditions.length !== 0 && typeof conditions === 'object') {
+       this.fields.filter(field => {
          conditions.forEach(condition => {
-          if(data == condition)
-            selectData.push(data);
-          else
-            throw new Error('No data match')
+           if(field === condition){
+             matchRecords.push(condition)
+           }
          });
        });
+       return matchRecords;
      }
-    return selectData;
   }
 }
 

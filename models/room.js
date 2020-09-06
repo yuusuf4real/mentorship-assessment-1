@@ -15,9 +15,9 @@ class Room extends Model {
     const instance = new Room();
 
     // Add your implementation here ...
-    instance.id = record;
+    instance.id       = record;
     instance.hotel_id = record;
-    instance.price = record;
+    instance.price    = record;
     instance.capacity = record;
 
     return instance;

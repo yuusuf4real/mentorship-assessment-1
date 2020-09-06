@@ -15,10 +15,10 @@ class Booking extends Model {
     const instance = new Booking();
 
     // Add your implementation here ...
-    instance.id = record;
-    instance.name = record;
-    instance.paid = record;
-    instance.room = record;
+    instance.id      = record;
+    instance.name    = record;
+    instance.paid    = record;
+    instance.room    = record;
     instance.room_id = record;
 
     return instance;
@@ -33,13 +33,13 @@ class Booking extends Model {
 
     // Remove the pass statement below and add your implementation there ...
 
-    const instance = new Model();
+    const instance = new Room();
 
-    instance.id = db;
+    instance.hotel_id = db;
 
-    if(instance.id === null) return null;
+    if(instance.hotel_id === null) return null;
 
-    return Hotel.create(db)
+    return Room.create(db);
   }
 }
 
